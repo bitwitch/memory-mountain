@@ -14,7 +14,7 @@ run: ${DATAFILE}
 # something to look at during the execution.
 
 ${DATAFILE}: benchmark harness.py
-	python -u ./harness.py | tee ${DATAFILE}
+	python3 -u ./harness.py | tee ${DATAFILE}
 
 plot: ${DATAFILE}
 	./plot.py ${DATAFILE}

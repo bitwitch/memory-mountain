@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -19,8 +19,8 @@ elif len(sys.argv) == 4:
     stride=int(sys.argv[2])
     runcount=int(sys.argv[3])
 else:
-    print "usage: %s SIZE STRIDE [COUNT]" % sys.argv[0]
-    print "run the benchmark COUNT times (default 500), and display the results as an histogram"
+    print("usage: %s SIZE STRIDE [COUNT]" % sys.argv[0])
+    print("run the benchmark COUNT times (default 500), and display the results as an histogram")
     sys.exit(1)
 
 for i in range(runcount):
@@ -30,7 +30,7 @@ for i in range(runcount):
 
     for l in log.splitlines():
         if "MB/s" in l:
-            print l
+            print(l)
             data.append( float(l[ l.find('=')+1: l.find('MB/s') ]) )
 
 plt.hist(data)
@@ -40,8 +40,8 @@ plt.ylabel("Count (out of %d)" % runcount);
 plt.title("Benchmark was run %d times.\n Throughput (MB/s) min=%.1f, max=%.1f, med=%.1f, avg=%.1f" % (
     runcount, min(data),max(data),np.median(data),np.average(data) ) )
 
-print '%d runs with size %d, stride %d -> median throughput = %.1f MB/s' % (runcount, size, stride, np.median(data))
-print 'min=%.1f, max=%.1f, med=%.1f, avg=%.1f' % (min(data),max(data),np.median(data),np.average(data))
+print('%d runs with size %d, stride %d -> median throughput = %.1f MB/s' % (runcount, size, stride, np.median(data)))
+print('min=%.1f, max=%.1f, med=%.1f, avg=%.1f' % (min(data),max(data),np.median(data),np.average(data)))
 
 
 plt.show()

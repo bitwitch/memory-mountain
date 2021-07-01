@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # note that this script is written for python2, but it should be
 # straightforward to port it to python3
@@ -43,14 +43,13 @@ def pretty_size(logsize,pos):
     return str(size)+suffixes[unit]
 
 fig = plt.figure()
-ax = fig.gca(projection='3d')
-
+ax = fig.add_subplot(projection='3d')
 
 if len(sys.argv)==2:
     with open(sys.argv[1]) as f:
         data = f.read()
 else:
-    print "usage: plot.py DATAFILE"
+    print("usage: plot.py DATAFILE")
     sys.exit(1)
     
 data = data.splitlines()
